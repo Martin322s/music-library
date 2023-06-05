@@ -7,6 +7,7 @@ import { Register } from "./components/Register/Register";
 import { Create } from "./components/Create/Create";
 import { Details } from "./components/Details/Details";
 import { Edit } from "./components/Edit/Edit";
+import { Routes } from "react-router-dom";
 
 function App() {
     return (
@@ -21,6 +22,9 @@ function App() {
                     <Create />
                     <Details />
                     <Edit />
+                    <Routes>
+
+                    </Routes>
                 </main>
                 <Footer />
             </div>
