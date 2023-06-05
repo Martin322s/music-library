@@ -4,4 +4,4 @@ export function Footer() {
             <p>@MusicLibrary</p>
         </footer>
     );
-};
+}
