@@ -20,7 +20,7 @@ export function Dashboard() {
                             <strong>Sales:</strong>
                             <span className="sales">26 million (50 million claimed)</span>
                         </p>
-                        <a className="details-btn" href="">
+                        <a className="details-btn" href="/">
                             Details
                         </a>
                     </li>
@@ -38,7 +38,7 @@ export function Dashboard() {
                             <strong>Sales:</strong>
                             <span className="sales">26 million (31 million claimed)</span>
                         </p>
-                        <a className="details-btn" href="">
+                        <a className="details-btn" href="/">
                             Details
                         </a>
                     </li>
@@ -56,7 +56,7 @@ export function Dashboard() {
                             <strong>Sales:</strong>
                             <span className="sales">18 million (30 million claimed)</span>
                         </p>
-                        <a className="details-btn" href="">
+                        <a className="details-btn" href="/">
                             Details
                         </a>
                     </li>

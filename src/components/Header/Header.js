@@ -7,17 +7,17 @@ export function Header() {
             </a>
             <nav>
                 <div>
-                    <a href="#">Dashboard</a>
+                    <a href="/">Dashboard</a>
                 </div>
                 {/* Logged-in users */}
                 <div className="user">
-                    <a href="#">Add Album</a>
-                    <a href="#">Logout</a>
+                    <a href="/">Add Album</a>
+                    <a href="/">Logout</a>
                 </div>
                 {/* Guest users */}
                 <div className="guest">
-                    <a href="#">Login</a>
-                    <a href="#">Register</a>
+                    <a href="/">Login</a>
+                    <a href="/">Register</a>
                 </div>
             </nav>
         </header>
