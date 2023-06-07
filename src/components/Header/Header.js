@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useLogin } from "../../hooks/useLogin";
 
 export function Header() {
+    const { user } = useLogin();
     return (
         <header>
             <Link id="logo" to="/">
@@ -10,17 +12,25 @@ export function Header() {
                 <div>
                     <Link to="/catalog">Dashboard</Link>
                 </div>
-                {/* Logged-in users */}
                 <div className="user">
-                    <Link to="/create">Add Album</Link>
-                    <Link to="/logout">Logout</Link>
+                    {user.accessToken ?
+                        <>
+                            <Link to="/create">Add Album</Link>
+                            <Link to="/logout">Logout</Link>
+                        </>
+                        : null
+                    }
                 </div>
-                {/* Guest users */}
                 <div className="guest">
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
+                    {!user.accessToken ?
+                        <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
+                        </>
+                        : null
+                    }
                 </div>
             </nav>
-        </header>
+        </header >
     );
 }

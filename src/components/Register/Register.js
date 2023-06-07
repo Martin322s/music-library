@@ -7,7 +7,7 @@ import { useLogin } from "../../hooks/useLogin";
 
 export function Register() {
     const navigate = useNavigate();
-    const { setUser, setLoggedIn } = useLogin();
+    const { setUser } = useLogin();
 
     const [data, setData] = useState({
         email: "",
@@ -30,7 +30,6 @@ export function Register() {
                         throw user.message;
                     } else {
                         setUser(user);
-                        setLoggedIn(true);
                         navigate('/');
                     }
                 })
