@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { changeHandler } from "../../utils/utils";
 import { passwordsMatch, regexValidator } from "../../utils/validations";
 import * as userService from "../../services/userService";
-import { useLogin } from "../../hooks/useLogin";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export function Register() {
     const navigate = useNavigate();
-    const { setUser } = useLogin();
+    const { userLogin } = useContext(AuthContext);
 
     const [data, setData] = useState({
         email: "",
@@ -29,7 +29,7 @@ export function Register() {
                     if (user.message) {
                         throw user.message;
                     } else {
-                        setUser(user);
+                        userLogin(user);
                         navigate('/');
                     }
                 })

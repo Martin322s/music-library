@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useLogin } from "../../hooks/useLogin";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export function Header() {
-    const { user } = useLogin();
+    const { user } = useContext(AuthContext);
     return (
         <header>
             <Link id="logo" to="/">
