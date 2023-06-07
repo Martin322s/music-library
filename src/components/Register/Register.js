@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { changeHandler } from "../../utils/utils";
-import { passwordsMatch } from "../../utils/validations";
+import { passwordsMatch, regexValidator } from "../../utils/validations";
+import * as userService from "../../services/userService";
 
 export function Register() {
     const [data, setData] = useState({
@@ -17,14 +18,29 @@ export function Register() {
 
     const submitHandler = (ev, userData) => {
         ev.preventDefault();
-        
+
+        if (!error.email && !error.password) {
+            userService.registerUser({ email: userData.email, password: userData.password })
+                .then(user => {
+                    if (user.message) {
+                        throw user.message;
+                    } else {
+                        console.log(user);
+                    }
+                })
+                .catch(err => {
+                    alert(err);
+                });
+        } else {
+            alert("Invalid email or password!");
+        }
     }
 
     return (
         <section id="register">
             <div className="form">
                 <h2>Register</h2>
-                <form 
+                <form
                     className="login-form"
                     autoComplete=""
                     onSubmit={(ev) => submitHandler(ev, data)}
@@ -36,6 +52,15 @@ export function Register() {
                         placeholder="email"
                         value={data.email}
                         onChange={(ev) => changeHandler(ev, setData)}
+                        onBlur={
+                            () => regexValidator(
+                                "^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$",
+                                data.email,
+                                "email",
+                                setError
+                            )
+                        }
+                        required
                     />
                     <input
                         type="password"
@@ -44,6 +69,8 @@ export function Register() {
                         placeholder="password"
                         value={data.password}
                         onChange={(ev) => changeHandler(ev, setData)}
+                        onBlur={() => passwordsMatch(data.password, data.repassword, 'password', setError)}
+                        required
                     />
                     <input
                         type="password"
@@ -53,6 +80,7 @@ export function Register() {
                         value={data.repassword}
                         onChange={(ev) => changeHandler(ev, setData)}
                         onBlur={() => passwordsMatch(data.password, data.repassword, 'password', setError)}
+                        required
                     />
                     <button type="submit">register</button>
                     <p className="message">

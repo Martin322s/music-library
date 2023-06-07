@@ -11,3 +11,18 @@ export function passwordsMatch(passwordOne, passwordTwo, type, setter) {
         }));
     }
 }
+
+export function regexValidator(regex, text, type, setter) {
+    const regexStr = new RegExp(regex, 'g');
+    if (!regexStr.test(text) && text !== "") {
+        setter(state => ({
+            ...state,
+            [type]: true
+        }));
+    } else {
+        setter(state => ({
+            ...state,
+            [type]: false
+        }));
+    }
+}
