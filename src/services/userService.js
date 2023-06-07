@@ -11,6 +11,7 @@ export const registerUser = async (userData) => {
         });
 
         if (res.status !== 200) {
+            // eslint-disable-next-line
             throw { message: 'Invalid email or passwords don\'t match!' }
         } else {
             return await res.json();

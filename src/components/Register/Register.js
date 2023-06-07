@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { changeHandler } from "../../utils/utils";
 import { passwordsMatch, regexValidator } from "../../utils/validations";
 import * as userService from "../../services/userService";
+import { useLogin } from "../../hooks/useLogin";
 
 export function Register() {
+    const navigate = useNavigate();
+    const { setUser, setLoggedIn } = useLogin();
+
     const [data, setData] = useState({
         email: "",
         password: "",
@@ -25,7 +29,9 @@ export function Register() {
                     if (user.message) {
                         throw user.message;
                     } else {
-                        console.log(user);
+                        setUser(user);
+                        setLoggedIn(true);
+                        navigate('/');
                     }
                 })
                 .catch(err => {
@@ -54,6 +60,7 @@ export function Register() {
                         onChange={(ev) => changeHandler(ev, setData)}
                         onBlur={
                             () => regexValidator(
+                                // eslint-disable-next-line
                                 "^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$",
                                 data.email,
                                 "email",
