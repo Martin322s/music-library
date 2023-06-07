@@ -20,3 +20,24 @@ export const registerUser = async (userData) => {
         return err;
     }
 }
+
+export const loginUser = async (userData) => {
+    try {
+        const res = await fetch(`${baseUrl}/login`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        });
+
+        if (res.status !== 200) {
+            // eslint-disable-next-line
+            throw { message: 'Invalid email or password!' }
+        } else {
+            return await res.json();
+        }
+    } catch (err) {
+        return err;
+    }
+}
