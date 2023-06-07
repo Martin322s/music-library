@@ -1,4 +1,11 @@
+import { useState } from "react";
+
 export function Login() {
+    const [data, setData] = useState({
+        email: "",
+        password: ""
+    });
+    
     return (
         <section id="login">
             <div className="form">

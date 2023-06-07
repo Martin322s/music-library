@@ -9,6 +9,7 @@ import { Create } from "./components/Create/Create";
 import { Details } from "./components/Details/Details";
 import { Edit } from "./components/Edit/Edit";
 import { AuthProvider } from "./contexts/AuthContext";
+import { Logout } from "./components/Logout/Logout";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                         <Route path="/catalog" element={<Dashboard />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/logout" element={<Logout />} />
                         <Route path="/create" element={<Create />} />
                         <Route path="/details" element={<Details />} />
                         <Route path="/edit" element={<Edit />} />
