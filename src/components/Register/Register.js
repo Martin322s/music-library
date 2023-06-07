@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { changeHandler } from "../../utils/utils";
+import { passwordsMatch } from "../../utils/validations";
 
 export function Register() {
     const [data, setData] = useState({
         email: "",
         password: "",
         repassword: ""
+    });
+
+    const [error, setError] = useState({
+        email: false,
+        password: false,
     });
 
     const submitHandler = (ev, userData) => {
@@ -46,6 +52,7 @@ export function Register() {
                         placeholder="repeat password"
                         value={data.repassword}
                         onChange={(ev) => changeHandler(ev, setData)}
+                        onBlur={() => passwordsMatch(data.password, data.repassword, 'password', setError)}
                     />
                     <button type="submit">register</button>
                     <p className="message">
