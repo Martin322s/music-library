@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { changeHandler } from "../../utils/utils";
+import { regexValidator } from "../../utils/validations";
 
 export function Login() {
     const [data, setData] = useState({
         email: "",
         password: ""
+    });
+
+    const [error, setError] = useState({
+        email: false,
+        password: false
     });
 
     const submitHandler = (ev, userData) => {
@@ -24,6 +30,16 @@ export function Login() {
                         placeholder="email"
                         value={data.email}
                         onChange={(ev) => changeHandler(ev, setData)}
+                        onBlur={
+                            () => regexValidator(
+                                // eslint-disable-next-line
+                                "^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$",
+                                data.email,
+                                "email",
+                                setError
+                            )
+                        }
+                        required
                     />
                     <input
                         type="password"
@@ -32,6 +48,7 @@ export function Login() {
                         placeholder="password"
                         value={data.password}
                         onChange={(ev) => changeHandler(ev, setData)}
+                        required
                     />
                     <button type="submit">login</button>
                     <p className="message">
