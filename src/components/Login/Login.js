@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { changeHandler } from "../../utils/utils";
 import { regexValidator } from "../../utils/validations";
+import * as userService from "../../services/userService";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+    const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -15,7 +21,23 @@ export function Login() {
 
     const submitHandler = (ev, userData) => {
         ev.preventDefault();
-        console.log(userData);
+
+        if ((data.email && data.password) && (!error.email && !error.password)) {
+            userService.loginUser({ email: userData.email, password: userData.password })
+                .then(user => {
+                    if (user.message) {
+                        throw user.message;
+                    } else {
+                        userLogin(user);
+                        navigate('/');
+                    }
+                })
+                .catch(err => {
+                    alert(err);
+                });
+        } else {
+            alert("Invalid email or password!");
+        }
     }
 
     return (
