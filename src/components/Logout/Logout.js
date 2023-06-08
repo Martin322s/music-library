@@ -4,11 +4,11 @@ import { Navigate } from "react-router-dom";
 import { logoutUser } from "../../services/userService";
 
 export function Logout() {
-    const { userLogout } = useContext(AuthContext);
+    const { user, userLogout } = useContext(AuthContext);
 
     useEffect(() => {
+        logoutUser(user.accessToken);
         userLogout();
-        logoutUser();
     }, [userLogout]);
     return <Navigate to="/" replace />
 }

@@ -51,6 +51,6 @@ export const logoutUser = async (token) => {
             }
         });
     } catch (error) {
-        return err;
+        return error;
     }
 }
