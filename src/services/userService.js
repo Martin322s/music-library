@@ -41,3 +41,16 @@ export const loginUser = async (userData) => {
         return err;
     }
 }
+
+export const logoutUser = async (token) => {
+    try {
+        await fetch(`${baseUrl}/logout`, {
+            method: "GET",
+            headers: {
+                'X-Authorization': token
+            }
+        });
+    } catch (error) {
+        return err;
+    }
+}
