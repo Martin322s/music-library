@@ -27,7 +27,7 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/create" element={<Create />} />
-                            <Route path="/details" element={<Details />} />
+                            <Route path="/details/:albumId" element={<Details />} />
                             <Route path="/edit" element={<Edit />} />
                         </Routes>
                     </main>

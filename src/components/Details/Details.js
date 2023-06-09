@@ -1,7 +1,17 @@
+import { useContext } from "react";
+import { useState } from "react";
+import { AlbumContext } from "../../contexts/MusicContext";
+import { useEffect } from "react";
+
 export function Details() {
+    const { getOneAlbum } = useContext(AlbumContext);
+    const [album, setAlbum] = useState({});
+
+    useEffect(() => {
+        
+    }, []);
     return (
         <>
-            {/* Details page */}
             <section id="details">
                 <div id="details-wrapper">
                     <p id="details-title">Album Details</p>
