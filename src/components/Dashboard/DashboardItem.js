@@ -1,22 +1,32 @@
-export function DashboardItem() {
+import { Link } from "react-router-dom";
+
+export function DashboardItem({
+    _id,
+    imageUrl,
+    singer,
+    album,
+    release,
+    label,
+    sales
+}) {
     return (
         <li className="card">
-            <img src="./images/BackinBlack.jpeg" alt="travis" />
+            <img src={imageUrl} alt={singer} />
             <p>
                 <strong>Singer/Band: </strong>
-                <span className="singer">AC/DC</span>
+                <span className="singer">{singer}</span>
             </p>
             <p>
                 <strong>Album name: </strong>
-                <span className="album">Back in Black</span>
+                <span className="album">{album}</span>
             </p>
             <p>
                 <strong>Sales:</strong>
-                <span className="sales">26 million (50 million claimed)</span>
+                <span className="sales">{sales}</span>
             </p>
-            <a className="details-btn" href="/">
+            <Link className="details-btn" to={`/details${_id}`}>
                 Details
-            </a>
+            </Link>
         </li>
     );
 }
