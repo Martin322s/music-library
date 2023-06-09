@@ -5,8 +5,6 @@ export function DashboardItem({
     imageUrl,
     singer,
     album,
-    release,
-    label,
     sales
 }) {
     return (
