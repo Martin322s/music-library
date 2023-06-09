@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { AlbumContext } from "../../contexts/MusicContext";
+import { DashboardItem } from "./DashboardItem";
 
 export function Dashboard() {
     const { getAllAlbums } = useContext(AlbumContext);
@@ -18,6 +19,11 @@ export function Dashboard() {
             <section id="dashboard">
                 <h2>Albums</h2>
                 <ul className="card-wrapper">
+                    {albums.length > 0 ?
+                        albums.map(x => <DashboardItem key={x._id} {...x} />)
+                        :
+                        <h2>There are no albums added yet.</h2>
+                    }
                 </ul>
                 {/* Display an h2 if there are no posts */}
                 <h2>There are no albums added yet.</h2>
