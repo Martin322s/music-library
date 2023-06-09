@@ -10,25 +10,29 @@ import { Details } from "./components/Details/Details";
 import { Edit } from "./components/Edit/Edit";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Logout } from "./components/Logout/Logout";
+import { AlbumContext } from "./contexts/MusicContext";
 
 function App() {
     return (
         <div id="wrapper">
             <AuthProvider>
-                <Header />
-                <main>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/catalog" element={<Dashboard />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/logout" element={<Logout />} />
-                        <Route path="/create" element={<Create />} />
-                        <Route path="/details" element={<Details />} />
-                        <Route path="/edit" element={<Edit />} />
-                    </Routes>
-                </main>
-                <Footer />
+                <AlbumContext>
+
+                    <Header />
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/catalog" element={<Dashboard />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/create" element={<Create />} />
+                            <Route path="/details" element={<Details />} />
+                            <Route path="/edit" element={<Edit />} />
+                        </Routes>
+                    </main>
+                    <Footer />
+                </AlbumContext>
             </AuthProvider>
         </div>
     );
