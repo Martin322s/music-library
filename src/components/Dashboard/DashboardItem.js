@@ -22,7 +22,7 @@ export function DashboardItem({
                 <strong>Sales:</strong>
                 <span className="sales">{sales}</span>
             </p>
-            <Link className="details-btn" to={`/details${_id}`}>
+            <Link className="details-btn" to={`/details/${_id}`}>
                 Details
             </Link>
         </li>
