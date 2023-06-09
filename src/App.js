@@ -10,13 +10,13 @@ import { Details } from "./components/Details/Details";
 import { Edit } from "./components/Edit/Edit";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Logout } from "./components/Logout/Logout";
-import { AlbumContext } from "./contexts/MusicContext";
+import { AlbumProvider } from "./contexts/MusicContext";
 
 function App() {
     return (
         <div id="wrapper">
             <AuthProvider>
-                <AlbumContext>
+                <AlbumProvider>
 
                     <Header />
                     <main>
@@ -32,7 +32,7 @@ function App() {
                         </Routes>
                     </main>
                     <Footer />
-                </AlbumContext>
+                </AlbumProvider>
             </AuthProvider>
         </div>
     );
