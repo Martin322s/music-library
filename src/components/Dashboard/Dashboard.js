@@ -16,7 +16,6 @@ export function Dashboard() {
     console.log(albums);
     return (
         <>
-            {/* Dashboard page */}
             <section id="dashboard">
                 <h2>Albums</h2>
                 <ul className="card-wrapper">
@@ -26,8 +25,6 @@ export function Dashboard() {
                         <h2>There are no albums added yet.</h2>
                     }
                 </ul>
-                {/* Display an h2 if there are no posts */}
-                <h2>There are no albums added yet.</h2>
             </section>
         </>
     );

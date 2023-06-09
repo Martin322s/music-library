@@ -6,7 +6,10 @@ export const AlbumContext = createContext();
 export const AlbumProvider = ({children}) => {
 
     return (
-        <AlbumContext.Provider value={{getAllAlbums: musicService.getAllAlbums }}>
+        <AlbumContext.Provider value={{
+            getAllAlbums: musicService.getAllAlbums,
+            getOneAlbum: musicService.getOneAlbum
+        }}>
             {children}
         </AlbumContext.Provider>
     );
