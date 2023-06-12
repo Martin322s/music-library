@@ -54,15 +54,18 @@ export function Details() {
                     {user.accessToken ?
                         (
                             <div id="action-buttons">
-                                <a href="/" id="like-btn">
-                                    Like
-                                </a>
-                                <a href="/" id="edit-btn">
-                                    Edit
-                                </a>
-                                <a href="/" id="delete-btn">
-                                    Delete
-                                </a>
+                                {user._id === album._ownerId
+                                    ?
+                                    <>
+                                        <a href="/" id="edit-btn">
+                                            Edit
+                                        </a>
+                                        <a href="/" id="delete-btn">
+                                            Delete
+                                        </a>
+                                    </>
+                                    : <a href="/" id="like-btn">Like</a>
+                                }
                             </div>
                         )
                         : null
