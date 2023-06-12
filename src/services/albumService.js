@@ -26,3 +26,12 @@ export const editAlbum = async (albumId, token, albumData) => {
     });
     return res.json();  
 }
+
+export const deleteAlbum = (albumId, token) => {
+    return fetch(`${baseUrl}/albums/${albumId}`, {
+        method: "DELETE",
+        headers: {
+            'X-Authorization': token
+        }
+    });
+}
