@@ -14,3 +14,15 @@ export const createAlbum = async (token, albumData) => {
     });
     return res.json();  
 }
+
+export const editAlbum = async (albumId, token, albumData) => {
+    const res = await fetch(`${baseUrl}/albums/${albumId}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(albumData)
+    });
+    return res.json();  
+}
