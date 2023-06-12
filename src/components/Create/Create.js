@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import * as albumService from "../../services/albumService";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export function Create() {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [data, setData] = useState({
         singer: "",
         album: "",
@@ -17,11 +22,16 @@ export function Create() {
         }));
     }
 
-    const submitHandler = (ev, albumData) => {
+    const submitHandler = (ev, albumData, token) => {
         ev.preventDefault();
         
         if (!Object.values(albumData).some(x => x === "")) {
+            try {
+                albumService.createAlbum(token, albumData)
+                    .then(() => navigate("/catalog"));
+            } catch(err) {
 
+            }
         } else {
             alert("All fields are required!");
         }
@@ -31,7 +41,7 @@ export function Create() {
         <section id="create">
             <div className="form">
                 <h2>Add Album</h2>
-                <form className="create-form" onSubmit={(ev) => submitHandler(ev, data)}>
+                <form className="create-form" onSubmit={(ev) => submitHandler(ev, data, user.accessToken)}>
                     <input
                         type="text"
                         name="singer"
