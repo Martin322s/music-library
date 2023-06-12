@@ -11,7 +11,7 @@ export function Dashboard() {
     useEffect(() => {
         getAllAlbums()
             .then(result => setAlbums(result));
-    }, []);
+    }, [getAllAlbums]);
 
     return (
         <>

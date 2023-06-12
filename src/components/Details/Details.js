@@ -14,7 +14,7 @@ export function Details() {
     useEffect(() => {
         getOneAlbum(albumId)
             .then(result => setAlbum(result));
-    }, [albumId]);
+    }, [albumId, getOneAlbum]);
 
     console.log(album);
     return (

@@ -4,7 +4,7 @@ export const getAllAlbums = () => fetch(`${baseUrl}/albums?sortBy=_createdOn%20d
 export const getOneAlbum = (albumId) => fetch(`${baseUrl}/albums/${albumId}`).then(res => res.json());
 
 export const createAlbum = async (token, albumData) => {
-    const res = await fetch(`${baseUrl}/ablums`, {
+    const res = await fetch(`${baseUrl}/albums`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -12,6 +12,5 @@ export const createAlbum = async (token, albumData) => {
         },
         body: JSON.stringify(albumData)
     });
-    const result = await res.json();
-    return result;    
+    return res.json();  
 }

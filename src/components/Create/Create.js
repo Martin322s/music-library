@@ -28,9 +28,12 @@ export function Create() {
         if (!Object.values(albumData).some(x => x === "")) {
             try {
                 albumService.createAlbum(token, albumData)
-                    .then(() => navigate("/catalog"));
+                    .then((result) => {
+                        navigate("/catalog");
+                        console.log(result);
+                    });
             } catch(err) {
-
+                alert(err);
             }
         } else {
             alert("All fields are required!");
