@@ -13,7 +13,6 @@ export function Dashboard() {
             .then(result => setAlbums(result));
     }, []);
 
-    console.log(albums);
     return (
         <>
             <section id="dashboard">
