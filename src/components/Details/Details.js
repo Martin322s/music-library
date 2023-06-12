@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { useState } from "react";
 import { AlbumContext } from "../../contexts/MusicContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export function Details() {
     const { albumId } = useParams();
+    const { user } = useContext(AuthContext);
     const { getOneAlbum } = useContext(AlbumContext);
     const [album, setAlbum] = useState({});
 
@@ -49,17 +51,22 @@ export function Details() {
                         Likes: <span id="likes-count">0</span>
                     </div>
                     {/*Edit and Delete are only for creator*/}
-                    <div id="action-buttons">
-                        <a href="/" id="like-btn">
-                            Like
-                        </a>
-                        <a href="/" id="edit-btn">
-                            Edit
-                        </a>
-                        <a href="/" id="delete-btn">
-                            Delete
-                        </a>
-                    </div>
+                    {user.accessToken ?
+                        (
+                            <div id="action-buttons">
+                                <a href="/" id="like-btn">
+                                    Like
+                                </a>
+                                <a href="/" id="edit-btn">
+                                    Edit
+                                </a>
+                                <a href="/" id="delete-btn">
+                                    Delete
+                                </a>
+                            </div>
+                        )
+                        : null
+                    }
                 </div>
             </section>
         </>
