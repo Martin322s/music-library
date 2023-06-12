@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AlbumContext } from "../../contexts/MusicContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export function Details() {
     const { albumId } = useParams();
@@ -57,14 +57,14 @@ export function Details() {
                                 {user._id === album._ownerId
                                     ?
                                     <>
-                                        <a href="/" id="edit-btn">
+                                        <Link to="/" id="edit-btn">
                                             Edit
-                                        </a>
-                                        <a href="/" id="delete-btn">
+                                        </Link>
+                                        <Link to="/" id="delete-btn">
                                             Delete
-                                        </a>
+                                        </Link>
                                     </>
-                                    : <a href="/" id="like-btn">Like</a>
+                                    : <Link to="/" id="like-btn">Like</Link>
                                 }
                             </div>
                         )
