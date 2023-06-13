@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import * as albumService from "../../services/albumService";
 
 export function Edit() {
+    const { albumId } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState({
         singer: "",
@@ -13,8 +15,9 @@ export function Edit() {
     });
 
     useEffect(() => {
-
-    }, []);
+        albumService.getOneAlbum(albumId)
+            .then(res => setData(res));
+    }, [albumId]);
 
     const changeHandler = (ev) => {
         setData(state => ({
