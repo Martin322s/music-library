@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Edit() {
@@ -11,6 +11,10 @@ export function Edit() {
         label: "",
         sales: ""
     });
+
+    useEffect(() => {
+
+    }, []);
 
     const changeHandler = (ev) => {
         setData(state => ({

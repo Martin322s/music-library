@@ -28,7 +28,7 @@ function App() {
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/create" element={<Create />} />
                             <Route path="/details/:albumId" element={<Details />} />
-                            <Route path="/edit" element={<Edit />} />
+                            <Route path="/details/:albumId/edit" element={<Edit />} />
                         </Routes>
                     </main>
                     <Footer />

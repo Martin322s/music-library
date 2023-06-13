@@ -57,7 +57,7 @@ export function Details() {
                                 {user._id === album._ownerId
                                     ?
                                     <>
-                                        <Link to="/" id="edit-btn">
+                                        <Link to={`/details/${albumId}/edit`} id="edit-btn">
                                             Edit
                                         </Link>
                                         <Link to="/" id="delete-btn">
