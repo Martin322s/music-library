@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as albumService from "../../services/albumService";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export function Edit() {
     const { albumId } = useParams();
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [data, setData] = useState({
         singer: "",
@@ -26,11 +28,21 @@ export function Edit() {
         }));
     }
 
+    const submitHandler = (ev, albumData, token) => {
+        ev.preventDefault();
+
+        if (!Object.values(data).some(x => x === "")) {
+            
+        } else {
+            alert("All fields are required!");
+        }
+    }
+
     return (
         <section id="edit">
             <div className="form">
                 <h2>Edit Album</h2>
-                <form className="edit-form">
+                <form className="edit-form" onSubmit={(ev) => submitHandler(ev, data, user.accessToken)}>
                     <input
                         type="text"
                         name="singer"
