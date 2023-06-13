@@ -32,7 +32,8 @@ export function Edit() {
         ev.preventDefault();
 
         if (!Object.values(data).some(x => x === "")) {
-            
+            albumService.editAlbum(albumId, token, albumData)
+                .then(() => navigate(`/details/${albumId}`));
         } else {
             alert("All fields are required!");
         }
