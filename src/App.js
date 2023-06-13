@@ -11,6 +11,7 @@ import { Edit } from "./components/Edit/Edit";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Logout } from "./components/Logout/Logout";
 import { AlbumProvider } from "./contexts/MusicContext";
+import { Delete } from "./components/Delete/Delete";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                             <Route path="/create" element={<Create />} />
                             <Route path="/details/:albumId" element={<Details />} />
                             <Route path="/details/:albumId/edit" element={<Edit />} />
+                            <Route path="/details/:albumId/delete" element={<Delete />} />
                         </Routes>
                     </main>
                     <Footer />

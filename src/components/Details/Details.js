@@ -60,7 +60,7 @@ export function Details() {
                                         <Link to={`/details/${albumId}/edit`} id="edit-btn">
                                             Edit
                                         </Link>
-                                        <Link to="/" id="delete-btn">
+                                        <Link to={`/details/${albumId}/delete`} id="delete-btn">
                                             Delete
                                         </Link>
                                     </>
