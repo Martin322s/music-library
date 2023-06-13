@@ -35,3 +35,7 @@ export const deleteAlbum = (albumId, token) => {
         }
     });
 }
+
+export const getAlbumLikes = (albumId) => 
+    fetch(`${baseUrl}/data/likes?where=albumId%3D%22${albumId}%22&distinct=_ownerId&count`)
+        .then(res => res.json());
